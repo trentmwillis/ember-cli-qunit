@@ -6,17 +6,11 @@ module.exports = {
   },
 
   afterInstall: function() {
-    var addonContext = this;
-
-    return this.addBowerPackageToProject('qunit', '~1.16.0')
-      .then(function() {
-        return addonContext.addBowerPackageToProject('stefanpenner/ember-cli-shims', '0.0.3');
-      })
-      .then(function() {
-        return addonContext.addBowerPackageToProject('ember-qunit-notifications', '0.0.4');
-      })
-      .then(function() {
-        return addonContext.addBowerPackageToProject('ember-qunit', '0.1.8');
-      });
+    return this.addBowerPackagesToProject([
+      { name: 'qunit',                        target: '~1.16.0' },
+      { name: 'stefanpenner/ember-cli-shims', target: '0.0.3' },
+      { name: 'ember-qunit-notifications',    target: '0.0.4' },
+      { name: 'ember-qunit',                  target: '0.1.8' }
+    ]);
   }
 };
